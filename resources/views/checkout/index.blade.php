@@ -94,10 +94,23 @@
                         @if ($total > 0)
                             <form action="{{ route('checkout.store') }}" method="POST">
                                 @csrf
-                                <button type="submit" class="btn samuraimart-submit-button text-white w-100">お支払い</a>
+                                <button type="submit" class="btn samuraimart-submit-button text-white w-100">カード決済</a>
                             </form>
                         @else
-                            <button class="btn samuraimart-submit-button-disabled w-100">お支払い</button>
+                            <button class="btn samuraimart-submit-button-disabled w-100">カード決済</button>
+                        @endif
+                    </div>
+                    <div class="mb-4">
+                        @if ($total > 0)
+                            <form action="{{ route('paypay.payment') }}" method="POST" name="price">
+                                @csrf
+
+                               <!-- <input type="number" name="price">円</a>-->
+
+                                <button type="submit" class="btn samuraimart-submit-button text-white w-100">paypay決済</a>
+                            </form>
+                        @else
+                            <button class="btn samuraimart-submit-button-disabled w-100">paypay決済</button>
                         @endif
                     </div>
                 </div>

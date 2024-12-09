@@ -68,6 +68,11 @@
                                 <p class="samuraimart-product-label mt-2">
                                     <a href="{{ route('products.show', $product) }}" class="link-dark">{{$product->name}}</a>
                                     <br>
+                                  
+                                    <!--平均評価の可視化-->
+                                    <span class="samuraimart-star-rating" data-rate="{{ round($product->reviews->avg('score') * 2) / 2 }}">
+                                    {{ round($product->reviews->avg('score'), 1) }}</span><br>
+
                                     <label>￥{{ number_format($product->price) }}</label>
                                 </p>
                             </div>

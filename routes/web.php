@@ -9,6 +9,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\PayPayController;
 
 
 /*
@@ -63,4 +64,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('checkout/success', 'success')->name('checkout.success');
   
     });
+});
+
+Route::prefix('paypay')->as('paypay.')->group(function () {
+    Route::view('/', 'paypay.payment')->name('index');
+    Route::view('/complete', 'paypay.complete')->name('complete');
+    Route::post('/payment', [PayPayController::class, 'payment'])->name('payment');
 });

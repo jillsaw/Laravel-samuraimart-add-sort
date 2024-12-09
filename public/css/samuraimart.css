@@ -387,3 +387,88 @@ a img:hover {
 .samuraimart-mypage-link:hover {
   background-color: #f8f9fa;
 }
+
+/* 星評価の表示 */
+.samuraimart-star-rating{
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  color: #cccccc;
+  white-space: nowrap;
+}
+
+.samuraimart-star-rating::before,
+.samuraimart-star-rating::after{
+  content:'★★★★★';
+}
+
+.samuraimart-star-rating::after{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  overflow: hidden;
+  color: #0fbe9f;
+  white-space: nowrap;
+}
+
+.samuraimart-star-rating[data-rate="0"]::after {
+  width: 0%;
+}
+
+.samuraimart-star-rating[data-rate="0.5"]::after {
+  width: 10%;
+}
+
+.samuraimart-star-rating[data-rate="1"]::after {
+  width: 20%;
+}
+
+.samuraimart-star-rating[data-rate="1.5"]::after {
+  width: 30%;
+}
+
+.samuraimart-star-rating[data-rate="2"]::after {
+  width: 40%;
+}
+
+.samuraimart-star-rating[data-rate="2.5"]::after {
+  width: 50%;
+}
+
+.samuraimart-star-rating[data-rate="3"]::after {
+  width: 60%;
+}
+
+.samuraimart-star-rating[data-rate="3.5"]::after {
+  width: 70%;
+}
+
+.samuraimart-star-rating[data-rate="4"]::after {
+  width: 80%;
+}
+
+.samuraimart-star-rating[data-rate="4.5"]::after {
+  width: 90%;
+}
+
+.samuraimart-star-rating[data-rate="5"]::after {
+  width: 100%;
+}
+
+/*スライドショー設定
+#carousel-section{
+  background-color:black;
+}
+
+.carousel{
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.carouselImg{
+  width: 700px;
+  height: 350px;
+}
+*/

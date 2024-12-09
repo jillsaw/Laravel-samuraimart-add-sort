@@ -15,6 +15,7 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "paypayopa/php-sdk": "^2.0",
         "stripe/stripe-php": "^16.3"
     },
     "require-dev": {

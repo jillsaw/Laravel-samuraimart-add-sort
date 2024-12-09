@@ -1,0 +1,9 @@
+/*スライドショー
+$('.carousel').slick({
+  autoplay:true,
+  dots:true,
+  infinite:true,
+  autoplaySpeed:4000,
+  arrows:false,
+});
+*/
