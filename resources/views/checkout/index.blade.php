@@ -102,10 +102,11 @@
                     </div>
                     <div class="mb-4">
                         @if ($total > 0)
-                            <form action="{{ route('paypay.payment') }}" method="POST" name="price">
+                            <form action="{{ route('paypay.payment') }}" method="POST">
                                 @csrf
 
-                               <!-- <input type="number" name="price">円</a>-->
+                                <input type="hidden" name="price" value="{{ $total }}">
+                           
 
                                 <button type="submit" class="btn samuraimart-submit-button text-white w-100">paypay決済</a>
                             </form>

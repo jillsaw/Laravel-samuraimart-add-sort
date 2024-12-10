@@ -13,8 +13,9 @@ use App\Models\Order;
 
 class PayPayController extends Controller
 {
-  
-    public function payment(Request $request)
+
+//注文内容の確認ページを表示する。
+ public function payment(Request $request)
 {
     DB::beginTransaction();
     try {
@@ -26,16 +27,18 @@ class PayPayController extends Controller
         ], $isProduction);
 
         $orderName = 'テスト';                                       // 商品名等
-        $price = $request->price;                                // 決済金額
+        $price = $request->input('price');                               // 決済金額
         $items = (new OrderItem())->setName($orderName)
                                   ->setQuantity(1)
                                   ->setUnitPrice(['amount' => $price, 'currency' => 'JPY']);
 
-   
+       
+//決済完了後の案内ページを表示する。
 
         $paypayMerchantPaymentId = 'mpid_' . rand() . time();       // PayPay決済成功時のWebhookに含めるユニークとなる決済ID
         $redirectUrl = route('paypay.complete');                    // PayPay決済成功後のリダイレクト先URL
 
+//paypay APIに支払い情報を送信し、paypayの決済ページにリダイレクトさせる。
         $CQPayload = new CreateQrCodePayload();
         $CQPayload->setOrderItems($items);
         $CQPayload->setMerchantPaymentId($paypayMerchantPaymentId);
@@ -53,7 +56,7 @@ class PayPayController extends Controller
         }
 
         Order::create([
-            'price' => $price,
+            'price' =>  $price,
             'is_payment' => false,
             'paypay_merchant_payment_id' => $paypayMerchantPaymentId
         ]);
@@ -62,10 +65,10 @@ class PayPayController extends Controller
 
         return redirect()->to($QRCodeResponse['data']['url']);       // PayPayの決済画面に遷移
 
+    
     } catch (\Exception $e) {
         DB::rollback();
         Log::error($e->getMessage());
     }
 }
-   
 }

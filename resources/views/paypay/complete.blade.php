@@ -1,14 +1,19 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.app')
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Laravel PayPay API</title>
-</head>
+@section('content')
+<div class="container pt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <h1 class="text-center mb-3">ご注文ありがとうございます！</h3>
 
-<body>
-  <p>決済完了</p>
-</body>
+            <p class="text-center lh-lg mb-5">
+                商品が到着するまでしばらくお待ち下さい。
+            </p>
 
-</html>
+            <div class="text-center">
+                <a href="{{ url('/') }}" class="btn samuraimart-submit-button w-75 text-white">トップページへ</a>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

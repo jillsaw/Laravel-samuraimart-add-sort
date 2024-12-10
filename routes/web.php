@@ -66,6 +66,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 });
 
+
 Route::prefix('paypay')->as('paypay.')->group(function () {
     Route::view('/', 'paypay.payment')->name('index');
     Route::view('/complete', 'paypay.complete')->name('complete');
